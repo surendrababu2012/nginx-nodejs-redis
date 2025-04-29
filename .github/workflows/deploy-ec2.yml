@@ -14,7 +14,7 @@ jobs:
         mkdir -p ~/.ssh
         echo "${{ secrets.EC2_KEY }}" > ~/.ssh/id_rsa
         chmod 600 ~/.ssh/id_rsa
-        scp -o StrictHostKeyChecking=no docker-compose.yml ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/home/${{ secrets.EC2_USER }}/app-dir/docker-compose.yml
+        scp -o StrictHostKeyChecking=no compose.yaml ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/home/${{ secrets.EC2_USER }}/app-dir/docker-compose.yml
 
 
     - name: Deploy using Compose on EC2
