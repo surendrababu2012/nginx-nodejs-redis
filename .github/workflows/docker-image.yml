@@ -20,8 +20,8 @@ jobs:
       run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
 
     - name: Build all services with Compose
-      run: docker-compose build
+      run: docker compose build
 
     - name: Push all images to Docker Hub
-      run: docker-compose push
+      run: docker compose push
 
