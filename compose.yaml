@@ -4,24 +4,30 @@ services:
     image: 'redislabs/redismod'
     ports:
       - '6379:6379'
+
   web1:
+    image: ${DOCKERHUB_USERNAME}/web1
     restart: on-failure
     build: ./web
     hostname: web1
     ports:
       - '81:5000'
+
   web2:
+    image: ${DOCKERHUB_USERNAME}/web2
     restart: on-failure
     build: ./web
     hostname: web2
     ports:
       - '82:5000'
+
   nginx:
+    image: ${DOCKERHUB_USERNAME}/nginx
     build: ./nginx
     ports:
-    - '80:80'
+      - '80:80'
     depends_on:
-    - web1
-    - web2
+      - web1
+      - web2
 
 
