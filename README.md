@@ -6,6 +6,7 @@ Project structure:
 ```
 .
 ├── README.md
+├── images
 ├── docker-compose.yaml
 ├── nginx
 │   ├── Dockerfile
@@ -16,9 +17,11 @@ Project structure:
     └── server.js
 
 ```
+##Architecture Diagram:
 
 ![Architecture Diagram](./images/ARCH.png)
 
+## Clone and push to your github
 ```
 git clone https://github.com/surendrababu2012/nginx-nodejs-redis.git
 
@@ -51,10 +54,11 @@ When deploying the application, docker compose maps port 80 of the nginx service
 
 
 ```
-# Add Docker's official GPG key:
+# Add ubuntu user to sudo group
 
 usermod -aG sudo ubuntu
 
+# Add Docker's official GPG key:
 
 sudo apt-get update
 sudo apt-get install ca-certificates curl
@@ -63,6 +67,7 @@ sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyring
 sudo chmod a+r /etc/apt/keyrings/docker.asc
 
 # Add the repository to Apt sources:
+
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
   $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
@@ -72,8 +77,6 @@ sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 sudo service docker start
-
-
 
 ```
 
@@ -92,8 +95,7 @@ Source : [Docker Docs](https://docs.docker.com/engine/install/ubuntu/#install-us
 > Docker Hub registry created
 > Env varibles created
 >
-```
-```
+
 ## Pipelines 
 
 
@@ -121,8 +123,16 @@ web2: Total number of visits is: 3
 
 ![Test Image Web](./images/web2.png)
 
+![Test Image Web](./images/web1.png)
 
 ## Stop and teardown the EC2 instance
+
+## Issues
+
+>If you stop the ec2 instance you have to update the env variable with new dns name as AWS will change the dns name for every stop-start unless you assign elastic IP and IP will not change or can use Route 53 to add custom DNS name, if owns ones.
+
+
+
 
 
 
