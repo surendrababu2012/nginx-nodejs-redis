@@ -89,7 +89,7 @@ Source : [Docker Docs](https://docs.docker.com/engine/install/ubuntu/#install-us
 
 ##
 
-> Now you have 1. Cloned GitHub 2.Docker Hub registry created 3.Env variables created
+> Now you have 1. Cloned GitHub 2. Docker Hub registry created 3. Env variables created
 
 
 ## Pipelines 
@@ -97,9 +97,20 @@ Source : [Docker Docs](https://docs.docker.com/engine/install/ubuntu/#install-us
 
 ![Pipeline Diagram](./images/CI-CD-Flow.png)
 
+# Build CI Pipeline
+```
+This Pipeline will build the docker images and push to Docker Hub
+
+```
+# Deploy CD Pipeline
+
+```
+This Pipeline will pull images from docker hub and deploy to EC2 instance
+```
+
 ##
 
-> Deploy pipeline will authenticate to EC2 instance using SSH key and we do it by injecting keys into GitHub runner while pipelline runtime.
+> Deploy pipeline will authenticate to EC2 instance using SSH key and we do it by injecting keys into GitHub runner while pipeline runtime.
 
 ## Testing the app
 
