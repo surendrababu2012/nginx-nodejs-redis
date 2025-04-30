@@ -5,43 +5,42 @@ on:
     branches:
       - main
     paths:
-      - 'Dockerfile'
-      - 'docker-compose.yaml'
-      - 'web/**'
-      - 'nginx/**'
+      - "Dockerfile"
+      - "docker-compose.yaml"
+      - "web/**"
+      - "nginx/**"
 
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Set DockerHub username in .env
-      run: echo "DOCKERHUB_USERNAME=${{ secrets.DOCKERHUB_USERNAME }}" > .env
+      - name: Set DockerHub username in .env
+        run: echo "DOCKERHUB_USERNAME=${{ secrets.DOCKERHUB_USERNAME }}" > .env
 
-    - name: Login to Docker Hub
-      run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
-    - name: Push the Images into the repo
-      run: docker buildx build --push -t "${{secrets.DOCKERHUB_USERNAME}}"/web1:latest ./web
-           docker buildx build --push -t "${{secrets.DOCKERHUB_USERNAME}}"/web2:latest ./web
-           docker buildx build --push -t "${{secrets.DOCKERHUB_USERNAME}}"/nginx:latest ./nginx
+      - name: Login to Docker Hub
+        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+      - name: Push the Images into the repo
+        run: |
+          docker buildx build --push -t "${{secrets.DOCKERHUB_USERNAME}}"/web1:latest ./web
+          docker buildx build --push -t "${{secrets.DOCKERHUB_USERNAME}}"/web2:latest ./web
+          docker buildx build --push -t "${{secrets.DOCKERHUB_USERNAME}}"/nginx:latest ./nginx
 
+      # - name: Generate self-signed certs
+      #   run: |
+      #     mkdir -p nginx/certs
+      #     if [ ! -f nginx/certs/server.crt ]; then
+      #     openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+      #     -keyout nginx/certs/server.key \
+      #     -out nginx/certs/server.crt \
+      #     -subj "/CN=localhost"
+      #     fi
 
-    # - name: Generate self-signed certs
-    #   run: |
-    #     mkdir -p nginx/certs
-    #     if [ ! -f nginx/certs/server.crt ]; then
-    #     openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
-    #     -keyout nginx/certs/server.key \
-    #     -out nginx/certs/server.crt \
-    #     -subj "/CN=localhost"
-    #     fi
+      # - name: Build all services with Compose file
+      #   run: docker compose build
 
-    - name: Build all services with Compose file
-      run: docker compose build
-
-    - name: Push all images to Docker Hub
-      run: docker compose push
-
+      # - name: Push all images to Docker Hub
+      #   run: docker compose push
