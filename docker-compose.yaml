@@ -9,6 +9,8 @@ services:
     image: ${DOCKERHUB_USERNAME}/web1
     restart: on-failure
     hostname: web1
+    expose: 
+      - '5000'
     ports:
       - '81:5000'
 
@@ -16,6 +18,8 @@ services:
     image: ${DOCKERHUB_USERNAME}/web2
     restart: on-failure
     hostname: web2
+    expose: 
+      - '5000'
     ports:
       - '82:5000'
 
