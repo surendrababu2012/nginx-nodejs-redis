@@ -23,22 +23,7 @@ jobs:
 
       - name: Login to Docker Hub
         run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
-      # - name: Push the Images into the repo
-      #   run: |
-      #     docker buildx build --push -t "${{secrets.DOCKERHUB_USERNAME}}"/web1:latest ./web
-      #     docker buildx build --push -t "${{secrets.DOCKERHUB_USERNAME}}"/web2:latest ./web
-      #     docker buildx build --push -t "${{secrets.DOCKERHUB_USERNAME}}"/nginx:latest ./nginx
-
-      # - name: Generate self-signed certs
-      #   run: |
-      #     mkdir -p nginx/certs
-      #     if [ ! -f nginx/certs/server.crt ]; then
-      #     openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
-      #     -keyout nginx/certs/server.key \
-      #     -out nginx/certs/server.crt \
-      #     -subj "/CN=localhost"
-      #     fi
-
+   
       - name: Build all services with Compose file
         run: docker compose build
 
