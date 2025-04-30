@@ -6,6 +6,8 @@ services:
       - '6379:6379'
 
   web1:
+    build:
+      context: ./web
     image: ${DOCKERHUB_USERNAME}/web1:latest
     restart: on-failure
     hostname: web1
@@ -15,6 +17,8 @@ services:
       - '81:5000'
 
   web2:
+    build:
+      context: ./web
     image: ${DOCKERHUB_USERNAME}/web2:latest
     restart: on-failure
     hostname: web2
@@ -24,6 +28,8 @@ services:
       - '82:5000'
 
   nginx:
+    build:
+      context: ./nginx
     image: ${DOCKERHUB_USERNAME}/nginx:latest
     ports:
       - '80:80'

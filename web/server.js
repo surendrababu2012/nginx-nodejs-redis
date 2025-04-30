@@ -6,7 +6,6 @@ const redisClient = redis.createClient({
   host: 'redis',
   port: 6379
 });
-// trigger
 
 app.get('/', function(req, res) {
     redisClient.get('numVisits', function(err, numVisits) {
@@ -14,7 +13,7 @@ app.get('/', function(req, res) {
         if (isNaN(numVisitsToDisplay)) {
             numVisitsToDisplay = 1;
         }
-       res.send(os.hostname() +': Number of visits : ' + numVisitsToDisplay);
+       res.send(os.hostname() +': Number of visits is now : ' + numVisitsToDisplay);
         numVisits++;
         redisClient.set('numVisits', numVisits);
     });
