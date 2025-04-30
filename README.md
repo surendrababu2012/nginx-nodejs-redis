@@ -1,6 +1,6 @@
 ## Node.js application with Nginx proxy and Redis database to demonstrate GitHub CI/CD workflow
 
-Project structure:
+### Project structure:
 ```
 .
 ├── README.md
@@ -97,12 +97,12 @@ Source : [Docker Docs](https://docs.docker.com/engine/install/ubuntu/#install-us
 
 ![Pipeline Diagram](./images/CI-CD-Flow.png)
 
-# Build CI Pipeline
+### Build CI Pipeline
 ```
 This Pipeline will build the docker images and push to Docker Hub
 
 ```
-# Deploy CD Pipeline
+### Deploy CD Pipeline
 
 ```
 This Pipeline will pull images from docker hub and deploy to EC2 instance
