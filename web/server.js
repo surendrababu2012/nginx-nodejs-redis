@@ -6,6 +6,7 @@ const redisClient = redis.createClient({
   host: 'redis',
   port: 6379
 });
+// tri
 
 app.get('/', function(req, res) {
     redisClient.get('numVisits', function(err, numVisits) {
