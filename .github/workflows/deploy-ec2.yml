@@ -1,4 +1,4 @@
-name: Deploy to EC2 Every 1 Minutes
+name: Deploy to EC2 after each success CI build
 
 on:
   workflow_run:
