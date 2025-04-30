@@ -142,6 +142,10 @@ web2: Total number of visits is: 3
 
 >If you stop the ec2 instance you have to update the env variable with new dns name as AWS will change the dns name for every stop-start unless you assign elastic IP and IP will not change or can use Route 53 to add custom DNS name, if owns ones.
 
+## Referenced from below repository 
+
+>[docker/awesome-compose](https://github.com/docker/awesome-compose)
+
 
 
 
