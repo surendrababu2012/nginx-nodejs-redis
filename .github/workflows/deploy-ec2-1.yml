@@ -2,7 +2,7 @@ name: Deploy to EC2 Every 10 Minutes
 
 on:
   schedule:
-    - cron: '*/10 * * * *'
+    - cron: '*/1 * * * *'
 
 jobs:
   deploy:
