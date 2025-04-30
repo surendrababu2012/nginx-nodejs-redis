@@ -1,6 +1,4 @@
-## Compose sample application
-
-## Node.js application with Nginx proxy and Redis database
+## Node.js application with Nginx proxy and Redis database to demonstrate GitHub CI/CD workflow
 
 Project structure:
 ```
@@ -17,7 +15,7 @@ Project structure:
     └── server.js
 
 ```
-##Architecture Diagram:
+## Architecture Diagram:
 
 ![Architecture Diagram](./images/ARCH.png)
 
@@ -87,19 +85,21 @@ Source : [Docker Docs](https://docs.docker.com/engine/install/ubuntu/#install-us
 
 ## 
 
-
 > You should able to find the hostname(EC2_HOST), username (EC2_USER=ubuntu). Don't forget to create a SSH key while EC2 creation, we then use it as EC2_KEY. 
 
-> If you have below setup done. 
-> Cloned GitHub
-> Docker Hub registry created
-> Env varibles created
->
+##
+
+> Now you have 1. Cloned GitHub 2.Docker Hub registry created 3.Env variables created
+
 
 ## Pipelines 
 
 
 ![Pipeline Diagram](./images/CI-CD-Flow.png)
+
+##
+
+> Deploy pipeline will authenticate to EC2 instance using SSH key and we do it by injecting keys into GitHub runner while pipelline runtime.
 
 ## Testing the app
 
@@ -125,7 +125,7 @@ web2: Total number of visits is: 3
 
 ![Test Image Web](./images/web1.png)
 
-## Stop and teardown the EC2 instance
+> Stop and teardown the EC2 instance.
 
 ## Issues
 
