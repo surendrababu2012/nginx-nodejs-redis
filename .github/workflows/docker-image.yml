@@ -34,7 +34,7 @@ jobs:
         -subj "/CN=localhost"
         fi
 
-    - name: Build all services with Compose
+    - name: Build all services with Compose file
       run: docker compose build
 
     - name: Push all images to Docker Hub
